@@ -7,13 +7,28 @@
 
 
 #include "header.h"
-#include "menuFun.h"
+#include "function.h"
 //structy
 typedef struct str
 {
     int length;
     char array [64];
 } string;
+
+//-----------------------------------------------
+void getPressEnter();
+void getMenu(char* typeMenu);
+void get_input( string* text );
+int isolate_int(string* text);
+void userMenu(char* typeMenu);
+void startMenu(char* typeMenu);
+void dietMenu(char* typeMenu);
+void mealCalMenu(char* typeMenu);
+void getChoiceFromContent(int* index,int count_content,char* typeMenu);
+void printContentTab(char cont[][128],int count_content);
+void userMenuFun();
+
+//------------------------------------------------
 
 //----------------------------------------------
 //----------------getPressEnter---------------------
@@ -154,7 +169,6 @@ int isolate_int(string* text)
         }
     }
     const int teen = 10;
-    int count_pow = count;
     int multiplication = 1;
     for (int i = (count-1) ; i>-1 ; i--)
     {
@@ -172,7 +186,144 @@ int isolate_int(string* text)
 //end
 
 
+//MENU
+
+//----------------------------------------------
+//----------------userMenu----------------------
+//----------------------------------------------
+
+
+void userMenu(char* typeMenu) {
+    printf("UserMenu (menu uzytkownika)\n");
+    char content[][128]={
+            {"0.exit (wyjscie)"},
+            {"1.see user data (pokaz dane uzytkownika)"},
+            {"2.edit user data (edycja danych uzytkownika)"},
+            {"3.choice user (wybor uzytkownika)"},
+            {"4.add user (dodaj uzytkownika)"},
+            {"5.delete user (usun uzytkownika)"},
+    };
+    int count_content=6;
+    printContentTab(content,count_content);
+    string input = {32};
+    string* ptr = &input;
+    get_input( ptr );
+    int index_number= isolate_int(ptr);
+    int* ptr_index_number= &index_number;
+    getChoiceFromContent(ptr_index_number,count_content,typeMenu);
+}//end
+
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+void userMenuFun()
+{
+
+}
+
+//----------------------------------------------
+//----------------startMenu---------------------
+//----------------------------------------------
+
+void startMenu(char* typeMenu)
+{
+
+}
+
+//----------------------------------------------
+//----------------dietMenu----------------------
+//----------------------------------------------
+
+void dietMenu(char* typeMenu)
+{
+    printf("DietMenu (Menu Diet)\n"
+           "0.exit (wyjscie)\n"
+           "1.diet calculator's (kalkulatory dietetyczne)\n"
+           "2.meal calculator (kalkulator posilku)\n");
+
+}//end
+
+//----------------------------------------------
+//----------------mealCalcMenu------------------
+//----------------------------------------------
+
+void mealCalMenu(char* typeMenu)
+{
+    printf("Meal Calculator (kalkulator posilkow)\n"
+           "0.exit (wyjscie)\n"
+           "1.List of ready meal (Lista Posilkow)\n"
+           "2.Add ready meal (dodaj gotowy posilek)\n"
+           "3.Delete ready meal (usun gotowy posilek)\n"
+           "4.Create meal from Food Products (tworzenie posilku z gotowych produktow spozywczych)\n ");
+
+}//end
+
+//--------------------------------------------------
+void getChoiceFromContent(int* index,int count_content,char* typeMenu)
+{
+    switch(*typeMenu)
+    {
+        case 'u':
+        {
+            if(((*index)>=0)||((*index)==count_content))
+            {
+                switch(*index)
+                {
+                    case 0:{
+                        *typeMenu='s';
+                        break;
+                    }
+                    case 1:
+                }
+            }
+            break;
+        }
+        case 's':
+        {
+
+
+            break;
+        }
+        case 'd':
+        {
+
+            break;
+        }
+        case 'm':
+        {
+
+            break;
+        }
+        default:
+        {
+
+        }
+    }
+}
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+void printContentTab(char cont[][128],int count_content)
+{
+    for(int i=0;i<count_content;i++)
+    {
+    printf("%s\n",cont[i]);
+    }
+}
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+
 
 
 
 #endif //INC_000000001_FUNCTION_H
+
+/*printf("UserMenu (menu uzytkownika)\n"
+           "0.exit (wyjscie)\n"
+           "1.see user data (pokaz dane uzytkownika)\n"
+           "2.edit user data (edycja danych uzytkownika)\n"
+           "3.choice user (wybor uzytkownika)"
+           "4.add user (dodaj uzytkownika)"
+           "5.delete user (usun uzytkownika)");
+      */
